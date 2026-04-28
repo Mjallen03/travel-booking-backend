@@ -1,44 +1,61 @@
 # Travel Booking Backend
 
-Spring Boot backend application for managing travel bookings, customer records, carts, and excursions. Built with a layered architecture using controllers, services, repositories, and JPA entities.
+Spring Boot backend application for managing travel bookings, including customers, carts, vacations, and excursions. Designed to support a frontend booking interface by handling checkout and data persistence.
 
 ## Overview
-This project provides backend functionality for a travel booking system. It supports customer order processing, excursion selection, cart management, and seeded sample data for testing and development.
+
+This application provides backend functionality for a travel booking system. It manages customer data, shopping cart behavior, and excursion selections, and processes checkout by persisting relational data across multiple entities.
 
 ## Tech Stack
+
 - Java
 - Spring Boot
-- Maven
 - Spring Data JPA
-- REST APIs
+- Maven
 - MySQL
-- Angular frontend integration
+- REST APIs
+- Angular (frontend integration)
 
 ## Features
-- REST endpoint for checkout and order placement
-- Layered backend architecture with controller, service, and repository layers
-- Entity modeling for customers, vacations, excursions, carts, and divisions
-- Seed data loading for initial records
-- Cross-origin configuration for frontend communication
-- Database persistence with JPA repositories
+
+- RESTful backend for travel booking operations
+- Checkout flow that processes customer orders and persists related data
+- Entity relationships between customers, carts, vacations, and excursions
+- Data seeding for initial records using a DataLoader
+- Cross-origin configuration to support Angular frontend communication
+- Repository pattern using Spring Data JPA
 
 ## Project Structure
-- `controllers/` - API endpoints
-- `services/` - business logic
-- `dao/` - data access repositories
-- `entities/` - domain models
-- `config/` - application configuration and seed data
+
+- `controllers/` – API endpoints
+- `services/` – business logic for checkout and processing
+- `dao/` – data access layer using JPA repositories
+- `entities/` – domain models (Customer, Cart, Vacation, Excursion, etc.)
+- `config/` – configuration classes and data seeding
 
 ## How to Run
+
 1. Clone the repository
-2. Configure the database in `application.properties`
-3. Run the application with Maven wrapper:
-   - `./mvnw spring-boot:run`
-   - or on Windows: `mvnw.cmd spring-boot:run`
-4. Connect the frontend or test endpoints locally
+2. Configure your database connection in `application.properties`
+3. Ensure MySQL is running and accessible
+4. Run the application:
+   - Linux/Mac:
+     ```
+     ./mvnw spring-boot:run
+     ```
+   - Windows:
+     ```
+     mvnw.cmd spring-boot:run
+     ```
+
+## Notes
+
+- Originally developed as part of a full-stack system with an Angular frontend
+- Backend is designed to handle checkout logic and persist booking data across related entities
 
 ## What I Learned
-- Building a backend application with Spring Boot
-- Structuring a project with layered architecture
-- Implementing RESTful services and persistence
-- Integrating backend functionality with a frontend application
+
+- Building a layered backend architecture using Spring Boot
+- Designing and implementing RESTful APIs
+- Working with relational data models and entity relationships
+- Integrating backend services with a frontend application
