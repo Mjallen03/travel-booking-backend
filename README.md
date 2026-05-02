@@ -1,61 +1,84 @@
-# Travel Booking Backend
+# Travel Booking Backend API
 
-Spring Boot backend application for managing travel bookings, including customers, carts, vacations, and excursions. Designed to support a frontend booking interface by handling checkout and data persistence.
+Spring Boot backend service for a travel booking platform, handling customers, carts, vacations, excursions, and checkout processing with MySQL persistence.
 
 ## Overview
-
-This application provides backend functionality for a travel booking system. It manages customer data, shopping cart behavior, and excursion selections, and processes checkout by persisting relational data across multiple entities.
+This application provides a RESTful API for managing travel booking operations. It supports customer management, shopping cart functionality, and a checkout system that persists relational data across multiple entities.
 
 ## Tech Stack
-
 - Java
 - Spring Boot
-- Spring Data JPA
-- Maven
+- Spring Data JPA (Hibernate)
 - MySQL
+- Maven
 - REST APIs
-- Angular (frontend integration)
 
 ## Features
-
-- RESTful backend for travel booking operations
-- Checkout flow that processes customer orders and persists related data
-- Entity relationships between customers, carts, vacations, and excursions
-- Data seeding for initial records using a DataLoader
-- Cross-origin configuration to support Angular frontend communication
-- Repository pattern using Spring Data JPA
+- RESTful API for managing:
+    - Customers
+    - Vacations
+    - Excursions
+    - Shopping carts
+- Checkout system that:
+    - Processes purchases
+    - Generates order tracking numbers
+    - Persists related entities (customer, cart, cart items)
+- Relational database modeling with JPA/Hibernate
+- Automatic schema updates using Hibernate
+- Preloaded sample data using a DataLoader
+- CORS configuration for frontend integration
 
 ## Project Structure
-
-- `controllers/` – API endpoints
-- `services/` – business logic for checkout and processing
-- `dao/` – data access layer using JPA repositories
-- `entities/` – domain models (Customer, Cart, Vacation, Excursion, etc.)
-- `config/` – configuration classes and data seeding
+controllers/   → API endpoints  
+services/      → business logic  
+dao/           → data access (JPA repositories)  
+entities/      → domain models  
+config/        → configuration and data seeding
 
 ## How to Run
 
-1. Clone the repository
-2. Configure your database connection in `application.properties`
-3. Ensure MySQL is running and accessible
-4. Run the application:
-   - Linux/Mac:
-     ```
-     ./mvnw spring-boot:run
-     ```
-   - Windows:
-     ```
-     mvnw.cmd spring-boot:run
-     ```
+### 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/travel-booking-backend.git  
+cd travel-booking-backend
+
+### 2. Set up MySQL
+Create a database:
+CREATE DATABASE full_stack_ecommerce;
+
+### 3. Update database config (if needed)
+Edit:
+src/main/resources/application.properties
+
+Make sure:
+spring.datasource.url=jdbc:mysql://localhost:3306/full_stack_ecommerce  
+spring.datasource.username=your_username  
+spring.datasource.password=your_password
+
+### 4. Run the application
+
+Windows:
+mvnw.cmd spring-boot:run
+
+Mac/Linux:
+./mvnw spring-boot:run
+
+### 5. Access the API
+Open in browser:
+http://localhost:8080/api
+
+Example endpoints:
+- /api/customers
+- /api/vacations
+- /api/excursions
+- /api/checkout/purchase
 
 ## Notes
-
-- Originally developed as part of a full-stack system with an Angular frontend
-- Backend is designed to handle checkout logic and persist booking data across related entities
+- Designed to integrate with an Angular frontend (not included)
+- Uses Spring Data REST for rapid API exposure
+- Built and tested locally with MySQL
 
 ## What I Learned
-
-- Building a layered backend architecture using Spring Boot
-- Designing and implementing RESTful APIs
-- Working with relational data models and entity relationships
-- Integrating backend services with a frontend application
+- Building a layered backend architecture (Controller → Service → DAO)
+- Integrating Spring Boot with a relational database
+- Designing RESTful APIs and handling data persistence
+- Debugging and configuring database connections in a local environment  
